@@ -377,6 +377,23 @@
   window.addEventListener('resize',sc);
   window.addEventListener('load',sc);
   sc();
+  // NAV scroll: add dark bg when scrolled past hero
+  var nav=document.querySelector('nav[data-nav]');
+  if(nav){
+    function updateNav(){
+      if(window.scrollY>80){
+        nav.style.background='rgba(0,0,0,0.85)';
+        nav.style.backdropFilter='blur(8px)';
+        nav.style.webkitBackdropFilter='blur(8px)';
+      }else{
+        nav.style.background='';
+        nav.style.backdropFilter='';
+        nav.style.webkitBackdropFilter='';
+      }
+    }
+    window.addEventListener('scroll',updateNav,{passive:true});
+    updateNav();
+  }
 })();
 </script>
 </body>
